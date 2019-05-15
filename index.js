@@ -1,11 +1,21 @@
+
+const listItemTemplate = '<li>' +
+    '<span class="shopping-item">/*Variable data will go here!*/</span>' +
+    '<div class="shopping-item-controls">' +
+      '<button class="shopping-item-toggle">' +
+        '<span class="button-label">check</span>' +
+      '</button>' +
+      '<button class="shopping-item-delete">' +
+        '<span class="button-label">delete</span>' +
+      '</button>' +
+    '</div>' +
+  '</li>';
+
 function handleClicks() {
   //Handle the clicks for both the new list item button, toggle button, and strikethrough button.
   //Need to preventDefault() here too.
   //Grab anything entered into the text box (#shopping-list-entry) and save it as a variable.
-}
-
-function newListItemTemplate() {
-  //This is where the template will go for new list items.
+  deleteListItem();
 }
 
 function addNewListItem(){
@@ -14,9 +24,12 @@ function addNewListItem(){
   // Push a new shopping list item to the top of the UL with a class of .shopping-list.
 }
 
-function clearListItems() {
+function deleteListItem() {
   //Clear all list items and wipe the slate clean.
   // Set a UL template with empty list items. template needs to have the same HTML structure, CSS classes, and elements as the current list, but with no items.
+  $(".shopping-item-delete").click(function() {
+    console.log('Hell ya! for the delete button!');
+  });
 }
 
 function checkAndUncheck(){
