@@ -15,6 +15,7 @@ function handleClicks() {
   //Handle the clicks for both the new list item button, toggle button, and strikethrough button.
   //Need to preventDefault() here too.
   //Grab anything entered into the text box (#shopping-list-entry) and save it as a variable.
+  addNewListItem();
   deleteListItem();
 }
 
@@ -22,6 +23,11 @@ function addNewListItem(){
   // Take the newListItemTemplate template
   // Add in the new #shopping-list-entry data
   // Push a new shopping list item to the top of the UL with a class of .shopping-list.
+  $("#js-shopping-list-form").on('submit', function() {
+    event.preventDefault();
+    var newItemEntered = $("#shopping-list-entry").val();
+    console.log(newItemEntered);
+  });
 }
 
 function deleteListItem() {
