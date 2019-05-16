@@ -5,6 +5,7 @@ function listItemTemplate(listItem) {
 function handleClicks() {
   addNewListItem();
   deleteListItem();
+  checkAndUncheck();
 }
 
 function addNewListItem(){
@@ -39,9 +40,14 @@ function deleteListItem() {
 }
 
 function checkAndUncheck(){
-  // Listen for a .shopping-item-toggle button to be pressed.
-  // Toggle() the class .shopping-item__checked against the nearest .shopping-list-item parent to the .shopping-item-toggle button that was pressed.
-}
+
+    $('.shopping-item-toggle').click(function() {
+    
+      $('.shopping-item__checked').toggle();
+      //Toggle runs but deletes the word, need to toggle just the class.
+      console.log('Was the toggle run?');
+    });
+};
 
 $(handleClicks);
 /* Do I need to have this at the bottom? */
