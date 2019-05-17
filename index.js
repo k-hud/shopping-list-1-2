@@ -38,7 +38,7 @@ function deleteListItem() {
 function checkAndUncheck(){
 
     $('.shopping-item-toggle').click(function(event) {
-      $(this).parent().parent().removeClass('shopping-item__checked');
+      $(this).parent().parent().parent().parent().removeClass('shopping-item__checked');
       console.log('Was the toggle run?');
     });
 };
