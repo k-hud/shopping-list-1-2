@@ -35,11 +35,10 @@ function deleteListItem() {
 }
 
 function checkAndUncheck(){
-// Will remove check now, but only using remove, need to toggle between
-// Either use IF to see if the class exists, if it does, remove it, if it doesnt, add interval
-// OR find a more elegant way of toggling the class
     $('.shopping-item-toggle').click(function(event) {
-      $(this).parent('.shopping-item').toggleClass('.shopping-item__checked');
+      $(this).parent().siblings().toggleClass('shopping-item__checked');
+      console.log($(this).parent().siblings());
+      console.log("I did it!");
     });
 };
 
