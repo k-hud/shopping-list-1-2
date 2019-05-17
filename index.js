@@ -10,12 +10,12 @@ function handleClicks() {
 
 function addNewListItem(){
   $("#js-shopping-list-form").on('submit', function() {
-    
+
     event.preventDefault();
-    
+
     var newItemEntered = $("#shopping-list-entry").val();
-    
-    $('.shopping-list').prepend($('<li>' + 
+
+    $('.shopping-list').prepend($('<li>' +
       '<span class="shopping-item">' + newItemEntered + '</span>' +
         '<div class="shopping-item-controls">' +
         '<button class="shopping-item-toggle">' +
@@ -27,24 +27,18 @@ function addNewListItem(){
         '</div>' +
       '</li>'));
       });
-    
-    
-}
+    }
 
 function deleteListItem() {
-  //Clear all list items and wipe the slate clean.
-  // Set a UL template with empty list items. template needs to have the same HTML structure, CSS classes, and elements as the current list, but with no items.
   $(".shopping-item-delete").click(function() {
-    console.log('Hell ya! for the delete button!');
+    $(this).closest("li").remove();
   });
 }
 
 function checkAndUncheck(){
 
-    $('.shopping-item-toggle').click(function() {
-    
-      $('.shopping-item__checked').toggle();
-      //Toggle runs but deletes the word, need to toggle just the class.
+    $('.shopping-item-toggle').click(function(event) {
+      $(this).parent().parent().removeClass('shopping-item__checked');
       console.log('Was the toggle run?');
     });
 };
