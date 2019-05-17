@@ -30,13 +30,14 @@ function addNewListItem(){
     }
 
 function deleteListItem() {
+//Doesnt work for new list items only existing items on page load
   $(".shopping-item-delete").click(function() {
     $(this).closest("li").remove();
   });
 }
 
 function checkAndUncheck(){
-
+// Not landing on right DOM element to toggle CSS need to target more elegantly
     $('.shopping-item-toggle').click(function(event) {
       $(this).parent().parent().parent().parent().removeClass('shopping-item__checked');
       console.log('Was the toggle run?');
