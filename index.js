@@ -1,6 +1,4 @@
-/*
-function listItemTemplate(listItem) {
-   ; };*/
+let listItemStyling = $('.shopping-item');
 
 function handleClicks() {
   addNewListItem();
@@ -37,10 +35,11 @@ function deleteListItem() {
 }
 
 function checkAndUncheck(){
-// Not landing on right DOM element to toggle CSS need to target more elegantly
+// Will remove check now, but only using remove, need to toggle between
+// Either use IF to see if the class exists, if it does, remove it, if it doesnt, add interval
+// OR find a more elegant way of toggling the class
     $('.shopping-item-toggle').click(function(event) {
-      $(this).parent().parent().parent().parent().removeClass('shopping-item__checked');
-      console.log('Was the toggle run?');
+      $(this).parent('.shopping-item').toggleClass('.shopping-item__checked');
     });
 };
 
