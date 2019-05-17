@@ -28,7 +28,6 @@ function addNewListItem(){
     }
 
 function deleteListItem() {
-//Doesnt work for new list items only existing items on page load
   $(".shopping-item-delete").click(function() {
     $(this).closest("li").remove();
   });
@@ -43,4 +42,3 @@ function checkAndUncheck(){
 };
 
 $(handleClicks);
-/* Do I need to have this at the bottom? */
