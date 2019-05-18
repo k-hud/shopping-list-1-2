@@ -6,9 +6,15 @@ function handleClicks() {
   bindCheckAndUncheck();
 }
 
-function deleteListItem() {
+function deleteListItem(event) {
   $(this).closest("li").remove();
   console.log("I ran the delete function");
+}
+
+function checkAndUncheck(event) {
+  $(this).parent().siblings().toggleClass('shopping-item__checked');
+  console.log($(this).parent().siblings());
+  console.log("I ran the check and uncheck function");
 }
 
 function addNewListItem(){
@@ -21,16 +27,15 @@ function addNewListItem(){
     $('.shopping-list').prepend($('<li>' +
       '<span class="shopping-item">' + newItemEntered + '</span>' +
         '<div class="shopping-item-controls">' +
-        '<button class="shopping-item-toggle">' +
+        '<button class="shopping-item-toggle" onClick="checkAndUncheck(event)">' +
         '<span class="button-label">check</span>' +
         '</button>' +
-        '<button class="shopping-item-delete" onClick="deleteListItem()">' +
+        '<button class="shopping-item-delete" onClick="deleteListItem(event)">' +
         '<span class="button-label" >delete</span>' +
         '</button>' +
         '</div>' +
       '</li>'));
       });
-
     }
 
 function bindDeleteListItem() {
@@ -38,11 +43,7 @@ function bindDeleteListItem() {
 }
 
 function bindCheckAndUncheck(){
-    $('.shopping-item-toggle').click(function(event) {
-      $(this).parent().siblings().toggleClass('shopping-item__checked');
-      console.log($(this).parent().siblings());
-      console.log("I did it!");
-    });
+  $('.shopping-item-toggle').click(checkAndUncheck);
 };
 
 $(handleClicks);
