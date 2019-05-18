@@ -1,9 +1,14 @@
-let listItemStyling = $('.shopping-item');
+
 
 function handleClicks() {
   addNewListItem();
-  deleteListItem();
-  checkAndUncheck();
+  bindDeleteListItem();
+  bindCheckAndUncheck();
+}
+
+function deleteListItem() {
+  $(this).closest("li").remove();
+  console.log("I ran the delete function");
 }
 
 function addNewListItem(){
@@ -19,21 +24,20 @@ function addNewListItem(){
         '<button class="shopping-item-toggle">' +
         '<span class="button-label">check</span>' +
         '</button>' +
-        '<button class="shopping-item-delete">' +
-        '<span class="button-label">delete</span>' +
+        '<button class="shopping-item-delete" onClick="deleteListItem()">' +
+        '<span class="button-label" >delete</span>' +
         '</button>' +
         '</div>' +
       '</li>'));
       });
+
     }
 
-function deleteListItem() {
-  $(".shopping-item-delete").click(function() {
-    $(this).closest("li").remove();
-  });
+function bindDeleteListItem() {
+  $(".shopping-item-delete").click(deleteListItem);
 }
 
-function checkAndUncheck(){
+function bindCheckAndUncheck(){
     $('.shopping-item-toggle').click(function(event) {
       $(this).parent().siblings().toggleClass('shopping-item__checked');
       console.log($(this).parent().siblings());
