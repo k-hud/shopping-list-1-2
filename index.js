@@ -1,5 +1,3 @@
-
-
 function handleClicks() {
   addNewListItem();
   bindDeleteListItem();
@@ -7,18 +5,11 @@ function handleClicks() {
 }
 
 function deleteListItem(event) {
-  //Becuase the "this" below is running on elements added to the DOM after load, can't seem to traverse and get to them.
-  //Thought passing an "event" argument from the prepended code below would work, but no luck.
   $(this).closest("li").remove();
-  console.log("I ran the delete function");
 }
 
 function checkAndUncheck(event) {
-  //Becuase the "this" below is running on elements added to the DOM after load, can't seem to traverse and get to them.
-  //Thought passing an "event" argument from the prepended code below would work, but no luck.
   $(this).parent().siblings().toggleClass('shopping-item__checked');
-  console.log($(this).parent().siblings());
-  console.log("I ran the check and uncheck function");
 }
 
 function addNewListItem(){
@@ -43,11 +34,15 @@ function addNewListItem(){
     }
 
 function bindDeleteListItem() {
-  $(".shopping-item-delete").click(deleteListItem);
-}
-
-function bindCheckAndUncheck(){
-  $('.shopping-item-toggle').click(checkAndUncheck);
+     $('.shopping-list').on('click', '.shopping-item-delete', function(event) {
+        $(this).closest('li').remove();
+      });
 };
+
+  function bindCheckAndUncheck() {
+       $('.shopping-list').on('click', '.shopping-item-toggle', function(event) {
+            $(this).parent().siblings().toggleClass('shopping-item__checked');
+        });
+  };
 
 $(handleClicks);
